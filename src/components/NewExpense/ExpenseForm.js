@@ -58,13 +58,13 @@ const ExpenseForm = (props) => {
     //   return {...prevState, enteredDate: e.target.value};
     // });
   };
-// Called on form submit, then calls onSaveExpenseData to push data up to NewExpense.js
+  // Called on form submit, then calls onSaveExpenseData to push data up to NewExpense.js
   const submitHandler = (e) => {
     e.preventDefault();
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
@@ -106,6 +106,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
